@@ -16,7 +16,7 @@ class _CoinsState extends State<Coins> {
   );
 
   List<Coin> coins = [];
-  List<Coin> filteredCoins = []; // List to store filtered coins
+  List<Coin> filteredCoins = [];
   final TextEditingController searchController = TextEditingController();
 
   @override
@@ -39,7 +39,7 @@ class _CoinsState extends State<Coins> {
 
       setState(() {
         coins = newCoins;
-        filteredCoins = newCoins; // Initialize filteredCoins with all coins
+        filteredCoins = newCoins;
       });
     });
   }
@@ -72,12 +72,14 @@ class _CoinsState extends State<Coins> {
           padding: const EdgeInsets.all(8.0),
           child: TextField(
             controller: searchController,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Search',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(),
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
             ),
-            onChanged: filterCoins, // Call filterCoins when input changes
+            onChanged: filterCoins,
           ),
         ),
         Expanded(
@@ -100,7 +102,7 @@ class _CoinsState extends State<Coins> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          '(${coin.priceChangePercent})',
+                          ' ${coin.priceChangePercent} ',
                           style: TextStyle(
                             color: double.parse(coin.priceChange) >= 0
                                 ? Colors.green
@@ -111,7 +113,7 @@ class _CoinsState extends State<Coins> {
                       ],
                     ),
                   ),
-                  const Divider(), // This adds the divider between ListTiles
+                  const Divider(),
                 ],
               );
             },

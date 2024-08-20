@@ -47,19 +47,28 @@ class _HomePageState extends State<HomePage> {
     'Wallet',
     'Profile',
   ];
-  static const primaryColor = Color(0xFFc1d3fe);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(screenName[currentIndex]),
+        title: Text(
+          screenName[currentIndex],
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: false,
-        backgroundColor: primaryColor,
+        backgroundColor: Colors.blue,
+        leading: const Icon(Icons.menu),
       ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
+        selectedItemColor: Colors.blue,
+        selectedFontSize: 16.0,
+        selectedIconTheme: const IconThemeData(size: 30),
         onTap: (value) {
           setState(() {
             currentIndex = value;
