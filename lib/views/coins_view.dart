@@ -39,7 +39,8 @@ class _CoinsState extends State<Coins> {
 
       setState(() {
         coins = newCoins;
-        filteredCoins = newCoins;
+        filterCoins(searchController
+            .text); // Reapply the filter based on the current search query
       });
     });
   }
